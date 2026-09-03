@@ -81,5 +81,17 @@ IBM Plex Mono (метки). Тайпскейл и отступы — на `clamp
 
 ## Деплой
 
-Любой статический хостинг (Netlify / Vercel / Cloudflare Pages / GitHub Pages):
-корень репозитория = корень сайта, билд-команда не нужна.
+Любой статический хостинг: корень репозитория = корень сайта, билд-команда не нужна.
+Все пути относительные, поэтому работает и в подпапке.
+
+### GitHub Pages (настроено)
+
+`.github/workflows/pages.yml` деплоит на каждый push в `main`.
+Один раз включить в **Settings → Pages → Source → GitHub Actions**.
+Адрес: `https://thevegassi.github.io/RetreatsTraveler/`
+(`.nojekyll` отключает Jekyll; `_headers` на Pages не действует — только Netlify/CF).
+
+### Netlify / Cloudflare Pages / Vercel
+
+Подключить репозиторий, build command — пусто, publish directory — `.`
+Здесь заголовки из `_headers` (кеш `/assets` на год, security) применяются.
